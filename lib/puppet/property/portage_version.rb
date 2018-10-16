@@ -7,7 +7,7 @@ class Puppet::Property::PortageVersion < Puppet::Property
 
   validate do |value|
     unless Puppet::Util::Portage.valid_version? value
-      raise ArgumentError, "#{name} must be a properly formatted version"
+      raise ArgumentError, "'#{value}' must be a properly formatted version"
     end
   end
 end
