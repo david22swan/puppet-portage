@@ -20,6 +20,9 @@ if Facter.value(:operatingsystem) == 'Gentoo'
   end
 
   eselect_modules.each do |eselect_module|
+    # Skip unless it supports the 'show' command
+    next unless %x{#{ESELECT_CMD} #{eselect_module} help}.split("\n").reject! { |c| c.chomp.empty? }.map { |s| s.split()[0] }.include?('show')
+    # Extract data
     if (submodules = eselect_modules_multitarget[eselect_module])
       submodules.each do |target|
         output = %x{#{ESELECT_CMD} #{eselect_module} show #{target}}.strip
