@@ -53,7 +53,7 @@ class portage (
   $emerge_command                 = $portage::params::emerge_command,
 ) inherits portage::params {
 
-  include ::portage::install
+  include portage::install
 
   file { [
     '/etc/portage/package.keywords',

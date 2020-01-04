@@ -37,7 +37,7 @@ define portage::postsync (
   $source  = undef,
 ) {
 
-  include '::portage'
+  include portage
 
   if ($content and $source) or (!$content and !$source) {
     fail('One (and only one) of [$content, $source] must be specified')
