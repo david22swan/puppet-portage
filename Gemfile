@@ -29,4 +29,4 @@ gem 'puppet-lint-variable_contains_upcase'
 gem 'rspec', :require => false
 gem 'rake', :require => false
 gem 'metadata-json-lint', :require => false
-gem 'mocha', :require => false
+gem 'mocha', '= 1.4.0', :require => false # newer versions trigger https://github.com/freerange/mocha/issues/348
