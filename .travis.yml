@@ -28,7 +28,7 @@ before_install:
 
 before_script:
   # Syck is mentioned in this file, but obsolete
-  - 'sed -i -e /require.*syck_node_monkeypatch/d ~/.rvm/gems/ruby-*/gems/puppet-*/lib/puppet/vendor/safe_yaml/lib/safe_yaml.rb'
+  - 'sed -i -e /require.*syck_node_monkeypatch/d ~/.rvm/gems/ruby-*/gems/puppet-*/lib/puppet/vendor/safe_yaml/lib/safe_yaml.rb || true'
 
 script:
   - 'SPEC_OPTS="--format documentation" bundle exec rake validate lint spec'
