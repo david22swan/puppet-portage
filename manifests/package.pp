@@ -127,7 +127,12 @@ define portage::package (
 ) {
 
   include portage::params
-  $_emerge_command = pick($emerge_command, $portage::emerge_command, $portage::params::emerge_command)
+  if(defined('$portage::emerge_command')) {
+    $_portage_emerge_command = $portage::emerge_command
+  } else {
+    $_portage_emerge_command = undef
+  }
+  $_emerge_command = pick($emerge_command, $_portage_emerge_command, $portage::params::emerge_command)
   validate_re($_emerge_command, '^/', 'emerge_command must start with an absolute path')
 
   $atom = $ensure ? {
