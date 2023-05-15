@@ -133,7 +133,7 @@ define portage::package (
     $_portage_emerge_command = undef
   }
   $_emerge_command = pick($emerge_command, $_portage_emerge_command, $portage::params::emerge_command)
-  validate_re($_emerge_command, '^/', 'emerge_command must start with an absolute path')
+  validate_legacy(Optional[String], 'validate_re', $_emerge_command, '^/', 'emerge_command must start with an absolute path')
 
   $atom = $ensure ? {
     /(present|absent|purged|held|installed|latest)/ => $name,
